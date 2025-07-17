@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ tour.title }}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header>
+  <h1>{{ tour.title }}</h1>
+</header>
+
+<main class="tour-detail">
+  {% if tour.image %}
+  <img src="{{ tour.image.url }}" alt="{{ tour.title }}">
+  {% endif %}
+  <p><strong>Место:</strong> {{ tour.location }}</p>
+  <p><strong>Даты:</strong> {{ tour.start_date }} — {{ tour.end_date }}</p>
+  <p><strong>Цена:</strong> {{ tour.price }} сом</p>
+  <p>{{ tour.description }}</p>
+  <a href="{% url 'home' %}">← Назад</a>
+</main>
+
+</body>
+</html>

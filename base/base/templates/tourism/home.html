@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Туры по Кыргызстану</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <h1>Открой Кыргызстан</h1>
+</header>
+
+<main>
+  <section class="tour-list">
+    {% for tour in tours %}
+    <div class="tour-card">
+      {% if tour.image %}
+      <img src="{{ tour.image.url }}" alt="{{ tour.title }}">
+      {% endif %}
+      <h2>{{ tour.title }}</h2>
+      <p><strong>Место:</strong> {{ tour.location }}</p>
+      <p><strong>Даты:</strong> {{ tour.start_date }} — {{ tour.end_date }}</p>
+      <p><strong>Цена:</strong> {{ tour.price }} сом</p>
+      <a href="{% url 'tour_detail' tour.pk %}">Подробнее</a>
+    </div>
+    {% endfor %}
+  </section>
+</main>
+
+</body>
+</html>
